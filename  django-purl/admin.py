@@ -1,4 +1,4 @@
-from purl.purl.models import Profile
+from test_purl.purl.models import Profile
 from django.contrib import admin
 
 class ProfileAdmin(admin.ModelAdmin):

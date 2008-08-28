@@ -1,4 +1,4 @@
-from purl.purl.models import *
+from test_purl.purl.models import *
 from django import forms
 from django.forms.util import ErrorList
 

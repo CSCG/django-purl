@@ -1,6 +1,6 @@
-from purl.purl.models import Profile, StepTwo, StepThree
+from test_purl.purl.models import Profile, StepTwo, StepThree
 from django.shortcuts import render_to_response
-from purl.purl.forms import *
+from test_purl.purl.forms import *
 from django.http import HttpResponseRedirect
 import datetime
 import string
