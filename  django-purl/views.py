@@ -1,9 +1,10 @@
 from test_purl.purl.models import Profile, StepTwo, StepThree
 from django.shortcuts import render_to_response
 from test_purl.purl.forms import *
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 import datetime
 import string
+from django.utils import simplejson
 
 def main(request):
 	profile = Profile()
@@ -105,3 +106,18 @@ def step_three(request, purl_id):
 			stepthree.date_visited = datetime.datetime.now()
 			stepthree.save()
 	return render_to_response('purl_user/step_three.html', { 'profile' : profile, 'step_three_form' : step_three_form })
+	
+def call_back(request, purl_id):
+	pid = purl_id.lower()
+	profile = Profile.objects.get(purl_name=pid)
+	results = {'success':False}
+	GET = request.GET
+	if 'favorite' in GET:
+		stepthree = StepThree.objects.get(stepthree_user=profile)
+		stepthree.callback = True
+		stepthree.save()         
+		answer = '<strong>Thank you, someone will contact you shortly.</strong>'
+		results = {'success':answer}
+		json = simplejson.dumps(results)
+		return HttpResponse(json, mimetype='application/json')
+		
