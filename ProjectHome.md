@@ -1,0 +1,3 @@
+Personalized URLs (PURLs) have been an upcoming marketing tactic for a few years now. This technology combines the use of variable printing on direct mail pieces which incorporates a PURL. Recipients of the piece then visit their very own personalized website.
+
+There are many projects out there that use PURLs and they are all rather expensive. This project hopes to make it easier for Django developers to make their own PURLs.
